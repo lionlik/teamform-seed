@@ -2,7 +2,7 @@
 
 
 angular.module('teamform-profile-app', ['firebase'])
-.controller('profileinput', ['$firebaseAuth','$scope', '$firebaseObject', '$firebaseArray', 
+.controller('profileinput', ['$firebaseAuth','$scope', '$firebaseObject', '$firebaseArray',
 function($firebaseAuth, $scope, $firebaseObject, $firebaseArray){
 
 	// Implementation the todoCtrl
@@ -61,11 +61,16 @@ function($firebaseAuth, $scope, $firebaseObject, $firebaseArray){
               $scope.profile[key] = $scope.input[key];
 
             }
+            else{
+              $scope.input[key] = $scope.profile[key];
+            }
           }
           if(typeof $scope.profile["like"]=="undefined"){$scope.profile["like"]=$scope.like;}
           if(typeof $scope.profile["pic"]=="undefined"){$scope.profile["pic"]=$scope.picdefault;}
           if(typeof $scope.profile["personality"]=="undefined"){$scope.profile["personality"]=$scope.personality;}
-          console.log("HI");
+
+
+
           $scope.profile.$save();
           // console.log(data);
           $scope.checkifuser();
@@ -92,7 +97,7 @@ function($firebaseAuth, $scope, $firebaseObject, $firebaseArray){
             $scope.profile[key] = $scope.input[key];
 
         }
-        console.log("saveprofile");
+        // console.log("saveprofile");
         // $scope.profile.name = $scope.input.name;
         // $scope.profile.gender = $scope.input.gender;
         // $scope.profile.birth = $scope.input.birth;
@@ -183,44 +188,36 @@ function($firebaseAuth, $scope, $firebaseObject, $firebaseArray){
 
 
           $scope.questions = [{
-              question: "Question1",
-              choices: [2, 5, 10, 1],
+              question: "I tend to trust most people.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               }, {
-              question: "Question2",
-              choices: [3, 6, 9, 2],
+              question: "I want to win the approval of those in authority, sometimes even when I don't really like them.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               }, {
-              question: "Question3",
-              choices: [72, 99, 108, 3],
+              question: "I love to take care of people and I'm good at it.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               }, {
-              question: "Question4",
-              choices: [4, 5, 6, 4],
+              question: "Success, prestige and recognition really matter to me.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               }, {
-              question: "Question5",
-              choices: [20, 30, 40, 5],
+              question: "I am more sensitive than most people; sometimes the world just seems too harsh.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               }, {
-              question: "Question6",
-              choices: [20, 30, 40, 5],
+              question: "I don't get depressed easily, if at all.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               },{
-              question: "Question7",
-              choices: [20, 30, 40, 5],
+              question: " I plan the next adventure before the current one is finished.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               },{
-              question: "Question8",
-              choices: [20, 30, 40, 5],
-
-              },{
-              question: "Question9",
-              choices: [20, 30, 40, 5],
-
-              },{
-              question: "Question10",
-              choices: [20, 30, 40, 5],
+              question: "I often refrain from acting, as I'm afraid of being overwhelmed.",
+              choices: ["No", "Partly", "Yes", "I dont want to tell you"],
 
               }];
 
